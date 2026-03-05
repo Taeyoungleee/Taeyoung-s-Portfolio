@@ -454,20 +454,23 @@ function ExperienceCard({ exp, isLast }: { exp: Experience, isLast: boolean }) {
 
         {/* Visuals Section */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 pt-4">
-          {exp.images.map((img, i) => (
-            <div key={i} className="group/img relative aspect-[16/10] rounded-2xl overflow-hidden border border-white/10 bg-zinc-900 p-2">
-              <div className="absolute inset-0 bg-accent/20 opacity-0 group-hover/img:opacity-100 transition-opacity z-10 pointer-events-none mix-blend-overlay" />
-              <SafeImage 
-                src={img} 
-                alt={`${exp.company} project ${i + 1}`} 
-                className="w-full h-full object-contain group-hover/img:scale-105 transition-all duration-700 ease-out"
-                fallback={`https://picsum.photos/seed/${exp.id}${i}/800/600`}
-              />
-              <div className="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover/img:opacity-100 transition-opacity z-20">
-                <p className="text-[10px] uppercase tracking-widest text-white/60 font-bold">Project Visual 0{i + 1}</p>
+          {exp.images.map((img, i) => {
+            const isElentec = exp.id === 'elentec';
+            return (
+              <div key={i} className={`group/img relative aspect-[16/10] rounded-2xl overflow-hidden border border-white/10 bg-zinc-900 ${isElentec ? 'p-2' : ''}`}>
+                <div className="absolute inset-0 bg-accent/20 opacity-0 group-hover/img:opacity-100 transition-opacity z-10 pointer-events-none mix-blend-overlay" />
+                <SafeImage 
+                  src={img} 
+                  alt={`${exp.company} project ${i + 1}`} 
+                  className={`w-full h-full ${isElentec ? 'object-contain' : 'object-cover'} group-hover/img:scale-105 transition-all duration-700 ease-out`}
+                  fallback={`https://picsum.photos/seed/${exp.id}${i}/800/600`}
+                />
+                <div className="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover/img:opacity-100 transition-opacity z-20">
+                  <p className="text-[10px] uppercase tracking-widest text-white/60 font-bold">Project Visual 0{i + 1}</p>
+                </div>
               </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </div>
     </motion.div>
