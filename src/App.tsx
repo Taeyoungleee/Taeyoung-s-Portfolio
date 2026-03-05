@@ -58,8 +58,8 @@ const experiences: Experience[] = [
       '최저가 오매칭 유형 정리를 통한 서비스 신뢰도 향상'
     ],
     images: [
-      'https://storage.googleapis.com/static-content-prod/file-750480133200',
-      'https://storage.googleapis.com/static-content-prod/file-750480135310'
+      'https://raw.githubusercontent.com/Taeyoungleee/Taeyoung-s-Portfolio/f8b7882ee4feed5bd0183dc835a60d2900efcc29/naver_ex_1.png',
+      'https://raw.githubusercontent.com/Taeyoungleee/Taeyoung-s-Portfolio/f8b7882ee4feed5bd0183dc835a60d2900efcc29/naver_ex_2.png'
     ]
   },
   {
@@ -79,8 +79,8 @@ const experiences: Experience[] = [
       '작업자 생산성 데이터 분석을 통한 1인당 생산성 30% 개선'
     ],
     images: [
-      'https://picsum.photos/seed/crowd1/800/600',
-      'https://picsum.photos/seed/crowd2/800/600'
+      'https://raw.githubusercontent.com/Taeyoungleee/Taeyoung-s-Portfolio/f8b7882ee4feed5bd0183dc835a60d2900efcc29/crowdworks_ex_1.png',
+      'https://raw.githubusercontent.com/Taeyoungleee/Taeyoung-s-Portfolio/f8b7882ee4feed5bd0183dc835a60d2900efcc29/crowdworks_ex_2.png'
     ]
   },
   {
@@ -100,8 +100,8 @@ const experiences: Experience[] = [
       'YOLO와 OCR 모델 결합을 통한 복합 객체 탐지 성공'
     ],
     images: [
-      'https://picsum.photos/seed/elentec1/800/600',
-      'https://picsum.photos/seed/elentec2/800/600'
+      'https://raw.githubusercontent.com/Taeyoungleee/Taeyoung-s-Portfolio/f8b7882ee4feed5bd0183dc835a60d2900efcc29/intern_ex_1.png',
+      'https://raw.githubusercontent.com/Taeyoungleee/Taeyoung-s-Portfolio/f8b7882ee4feed5bd0183dc835a60d2900efcc29/intern_ex_2.png'
     ]
   }
 ];
@@ -122,11 +122,13 @@ const SafeImage = ({
   src, 
   alt, 
   className, 
+  style,
   fallback = "https://picsum.photos/seed/taeyoung/800/600" 
 }: { 
   src: string, 
   alt: string, 
   className?: string, 
+  style?: React.CSSProperties,
   fallback?: string 
 }) => {
   const [imgSrc, setImgSrc] = useState(src);
@@ -141,6 +143,7 @@ const SafeImage = ({
       src={imgSrc} 
       alt={alt} 
       className={className}
+      style={style}
       referrerPolicy="no-referrer"
       onError={() => setImgSrc(fallback)}
     />
@@ -173,9 +176,10 @@ const VerifiedBadge = ({ size = 20 }: { size?: number }) => (
 const ProfileImage = ({ className, size = "w-full h-full" }: { className?: string, size?: string }) => {
   return (
     <SafeImage 
-      src="https://storage.googleapis.com/static-content-prod/file-750480004070"
+      src="https://raw.githubusercontent.com/Taeyoungleee/Taeyoung-s-Portfolio/f8b7882ee4feed5bd0183dc835a60d2900efcc29/my_image.png"
       alt="Taeyoung"
-      className={`${size} object-cover ${className || ""}`}
+      className={`${size} object-cover transition-opacity duration-300 ${className || ""}`}
+      style={{ imageRendering: 'auto' }}
       fallback="https://picsum.photos/seed/taeyoung/400/400"
     />
   );
@@ -310,50 +314,52 @@ const MobileNav = ({ activeSection, setActiveSection }: { activeSection: string,
 const Header = () => {
   return (
     <section id="home" className="pt-24 lg:pt-12 pb-16">
-      <div className="flex flex-col items-start gap-6">
-        <div className="relative">
-          <div className="w-20 h-20 rounded-full overflow-hidden border border-white/10">
-            <ProfileImage />
-          </div>
-          <div className="absolute bottom-0.5 right-0.5 w-4 h-4 bg-emerald-500 rounded-full border-2 border-bg"></div>
-        </div>
-
-        <div className="max-w-xl">
-          <div className="flex items-center gap-2 mb-1">
-            <h1 className="text-3xl font-bold text-white">Taeyoung</h1>
-            <VerifiedBadge size={22} />
-          </div>
-          <p className="text-zinc-400 text-lg mb-6">
-            Data & AI
-          </p>
-          
-          <div className="space-y-6 mb-8">
-            <p className="text-zinc-400 text-base leading-relaxed">
-              Driven by data, defined by action.
-            </p>
-            <div className="flex items-center gap-2 text-zinc-400 text-sm">
-              <span>Currently based in Seoul, South Korea 🇰🇷</span>
+      <div className="relative flex flex-col lg:flex-row items-center gap-12">
+        <div className="flex-1 flex flex-col items-start gap-6 z-10">
+          <div className="relative">
+            <div className="w-20 h-20 rounded-full overflow-hidden border border-white/10 bg-zinc-900 shadow-inner">
+              <ProfileImage />
             </div>
+            <div className="absolute bottom-0.5 right-0.5 w-4 h-4 bg-emerald-500 rounded-full border-2 border-[#050505] shadow-sm"></div>
           </div>
 
-          <div className="flex flex-wrap gap-3">
-            <button className="bg-white text-black px-6 py-2 rounded-lg font-semibold text-sm hover:bg-zinc-200 transition-colors">
-              View Resume
-            </button>
-            <a 
-              href="mailto:lee1179717@naver.com"
-              className="bg-white/5 text-white p-2 rounded-lg border border-white/10 hover:bg-white/10 transition-colors flex items-center justify-center"
-            >
-              <Mail size={20} />
-            </a>
-            <a 
-              href="https://github.com/Taeyoungleee" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="bg-white/5 text-white p-2 rounded-lg border border-white/10 hover:bg-white/10 transition-colors flex items-center justify-center"
-            >
-              <Github size={20} />
-            </a>
+          <div className="max-w-xl">
+            <div className="flex items-center gap-2 mb-1">
+              <h1 className="text-3xl font-bold text-white">Taeyoung</h1>
+              <VerifiedBadge size={22} />
+            </div>
+            <p className="text-zinc-400 text-lg mb-6">
+              Data & AI
+            </p>
+            
+            <div className="space-y-6 mb-8">
+              <p className="text-zinc-400 text-base leading-relaxed">
+                Driven by data, defined by action.
+              </p>
+              <div className="flex items-center gap-2 text-zinc-400 text-sm">
+                <span>Currently based in Seoul, South Korea 🇰🇷</span>
+              </div>
+            </div>
+
+            <div className="flex flex-wrap gap-3">
+              <button className="bg-white text-black px-6 py-2 rounded-lg font-semibold text-sm hover:bg-zinc-200 transition-colors">
+                View Resume
+              </button>
+              <a 
+                href="mailto:lee1179717@naver.com"
+                className="bg-white/5 text-white p-2 rounded-lg border border-white/10 hover:bg-white/10 transition-colors flex items-center justify-center"
+              >
+                <Mail size={20} />
+              </a>
+              <a 
+                href="https://github.com/Taeyoungleee" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="bg-white/5 text-white p-2 rounded-lg border border-white/10 hover:bg-white/10 transition-colors flex items-center justify-center"
+              >
+                <Github size={20} />
+              </a>
+            </div>
           </div>
         </div>
       </div>
@@ -449,12 +455,12 @@ function ExperienceCard({ exp, isLast }: { exp: Experience, isLast: boolean }) {
         {/* Visuals Section */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 pt-4">
           {exp.images.map((img, i) => (
-            <div key={i} className="group/img relative aspect-[16/10] rounded-2xl overflow-hidden border border-white/10 bg-zinc-900">
+            <div key={i} className="group/img relative aspect-[16/10] rounded-2xl overflow-hidden border border-white/10 bg-zinc-900 p-2">
               <div className="absolute inset-0 bg-accent/20 opacity-0 group-hover/img:opacity-100 transition-opacity z-10 pointer-events-none mix-blend-overlay" />
               <SafeImage 
                 src={img} 
                 alt={`${exp.company} project ${i + 1}`} 
-                className="w-full h-full object-cover grayscale group-hover/img:grayscale-0 group-hover/img:scale-105 transition-all duration-700 ease-out"
+                className="w-full h-full object-contain group-hover/img:scale-105 transition-all duration-700 ease-out"
                 fallback={`https://picsum.photos/seed/${exp.id}${i}/800/600`}
               />
               <div className="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover/img:opacity-100 transition-opacity z-20">
@@ -602,25 +608,27 @@ export default function Portfolio() {
       <Sidebar activeSection={activeSection} setActiveSection={setActiveSection} />
       <MobileNav activeSection={activeSection} setActiveSection={setActiveSection} />
       
-      <main className="lg:ml-64 px-6 lg:px-16 max-w-6xl mx-auto">
-        <Header />
-        
-        <section id="experience" className="py-20 border-t border-white/5">
-          <h2 className="text-xs uppercase tracking-[0.3em] text-zinc-600 font-bold mb-16">Work Experience</h2>
-          {experiences.map((exp, index) => (
-            <div key={exp.id}>
-              <ExperienceCard 
-                exp={exp} 
-                isLast={index === experiences.length - 1} 
-              />
-            </div>
-          ))}
-        </section>
+      <main className="lg:ml-64 min-h-screen">
+        <div className="max-w-6xl mx-auto px-6 lg:px-16">
+          <Header />
+          
+          <section id="experience" className="py-20 border-t border-white/5">
+            <h2 className="text-xs uppercase tracking-[0.3em] text-zinc-600 font-bold mb-16">Work Experience</h2>
+            {experiences.map((exp, index) => (
+              <div key={exp.id}>
+                <ExperienceCard 
+                  exp={exp} 
+                  isLast={index === experiences.length - 1} 
+                />
+              </div>
+            ))}
+          </section>
 
-        <SkillsSection />
-        <CertificatesSection />
-        <ContactSection />
-        <Footer />
+          <SkillsSection />
+          <CertificatesSection />
+          <ContactSection />
+          <Footer />
+        </div>
       </main>
 
       {/* Background decoration */}
