@@ -367,7 +367,7 @@ const Header = () => {
   );
 };
 
-function ExperienceCard({ exp, isLast }: { exp: Experience, isLast: boolean }) {
+function ExperienceCard({ exp, isLast, onImageClick }: { exp: Experience, isLast: boolean, onImageClick: (src: string) => void }) {
   return (
     <motion.div 
       initial={{ opacity: 0, y: 20 }}
@@ -457,7 +457,11 @@ function ExperienceCard({ exp, isLast }: { exp: Experience, isLast: boolean }) {
           {exp.images.map((img, i) => {
             const isElentec = exp.id === 'elentec';
             return (
-              <div key={i} className={`group/img relative aspect-[16/10] rounded-2xl overflow-hidden border border-white/10 bg-zinc-900 ${isElentec ? 'p-2' : ''}`}>
+              <div 
+                key={i} 
+                onClick={() => onImageClick(img)}
+                className={`group/img relative aspect-[16/10] rounded-2xl overflow-hidden border border-white/10 bg-zinc-900 cursor-zoom-in ${isElentec ? 'p-2' : ''}`}
+              >
                 <div className="absolute inset-0 bg-accent/20 opacity-0 group-hover/img:opacity-100 transition-opacity z-10 pointer-events-none mix-blend-overlay" />
                 <SafeImage 
                   src={img} 
@@ -601,10 +605,49 @@ const Footer = () => {
   );
 };
 
+const ImageModal = ({ src, isOpen, onClose }: { src: string | null, isOpen: boolean, onClose: () => void }) => {
+  return (
+    <AnimatePresence>
+      {isOpen && src && (
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          onClick={onClose}
+          className="fixed inset-0 z-[100] flex items-center justify-center bg-black/90 p-4 md:p-10 cursor-zoom-out"
+        >
+          <motion.div
+            initial={{ scale: 0.9, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            exit={{ scale: 0.9, opacity: 0 }}
+            transition={{ type: 'spring', damping: 25, stiffness: 300 }}
+            className="relative max-w-7xl max-h-full"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <button 
+              onClick={onClose}
+              className="absolute -top-12 right-0 text-white/70 hover:text-white transition-colors p-2"
+            >
+              <X size={32} />
+            </button>
+            <img 
+              src={src} 
+              alt="Preview" 
+              className="w-full h-auto max-h-[85vh] object-contain rounded-lg shadow-2xl"
+              referrerPolicy="no-referrer"
+            />
+          </motion.div>
+        </motion.div>
+      )}
+    </AnimatePresence>
+  );
+};
+
 // --- Main App ---
 
 export default function Portfolio() {
   const [activeSection, setActiveSection] = useState('home');
+  const [selectedImage, setSelectedImage] = useState<string | null>(null);
 
   return (
     <div className="min-h-screen bg-bg selection:bg-accent selection:text-white">
@@ -622,6 +665,7 @@ export default function Portfolio() {
                 <ExperienceCard 
                   exp={exp} 
                   isLast={index === experiences.length - 1} 
+                  onImageClick={(src) => setSelectedImage(src)}
                 />
               </div>
             ))}
@@ -633,6 +677,12 @@ export default function Portfolio() {
           <Footer />
         </div>
       </main>
+
+      <ImageModal 
+        src={selectedImage} 
+        isOpen={!!selectedImage} 
+        onClose={() => setSelectedImage(null)} 
+      />
 
       {/* Background decoration */}
       <div className="fixed top-0 right-0 -z-10 w-[500px] h-[500px] bg-accent/5 blur-[120px] rounded-full pointer-events-none" />
