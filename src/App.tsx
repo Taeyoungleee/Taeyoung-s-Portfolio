@@ -213,12 +213,12 @@ const Sidebar = ({ activeSection, setActiveSection }: { activeSection: string, s
   ];
 
   return (
-    <div className="hidden lg:flex flex-col w-64 h-screen fixed left-0 top-0 border-r border-white/5 p-6 bg-bg z-50">
+    <div className="hidden lg:flex flex-col w-64 h-screen fixed left-0 top-0 border-r border-border p-6 bg-bg z-50">
       <div className="flex items-center gap-3 mb-12 px-2">
-        <div className="w-8 h-8 rounded-full overflow-hidden border border-white/10">
+        <div className="w-8 h-8 rounded-full overflow-hidden border border-black/10">
           <ProfileImage />
         </div>
-        <span className="text-white font-semibold tracking-tight">Taeyoung.dev</span>
+        <span className="text-zinc-900 font-semibold tracking-tight">Taeyoung.dev</span>
       </div>
 
       <nav className="flex-1 space-y-1">
@@ -237,15 +237,15 @@ const Sidebar = ({ activeSection, setActiveSection }: { activeSection: string, s
         ))}
       </nav>
 
-      <div className="mt-auto pt-6 border-t border-white/5 space-y-4">
+      <div className="mt-auto pt-6 border-t border-border space-y-4">
         <div className="px-2">
-          <p className="text-[10px] uppercase tracking-widest text-zinc-600 font-bold mb-4">Contact</p>
+          <p className="text-[10px] uppercase tracking-widest text-zinc-400 font-bold mb-4">Contact</p>
           <div className="space-y-3">
-            <a href="mailto:lee1179717@naver.com" className="flex items-center gap-3 text-sm text-zinc-500 hover:text-white transition-colors">
+            <a href="mailto:lee1179717@naver.com" className="flex items-center gap-3 text-sm text-zinc-500 hover:text-zinc-900 transition-colors">
               <Mail size={16} />
               <span>Email</span>
             </a>
-            <a href="https://github.com/Taeyoungleee" target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 text-sm text-zinc-500 hover:text-white transition-colors">
+            <a href="https://github.com/Taeyoungleee" target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 text-sm text-zinc-500 hover:text-zinc-900 transition-colors">
               <Github size={16} />
               <span>GitHub</span>
             </a>
@@ -267,15 +267,15 @@ const MobileNav = ({ activeSection, setActiveSection }: { activeSection: string,
   ];
 
   return (
-    <div className="lg:hidden fixed top-0 left-0 w-full z-[100] p-4 bg-bg/80 backdrop-blur-lg border-b border-white/5">
+    <div className="lg:hidden fixed top-0 left-0 w-full z-[100] p-4 bg-bg/80 backdrop-blur-lg border-b border-border">
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-2">
-          <div className="w-6 h-6 rounded-full overflow-hidden border border-white/10">
+          <div className="w-6 h-6 rounded-full overflow-hidden border border-black/10">
             <ProfileImage />
           </div>
-          <span className="text-white font-semibold text-sm">Taeyoung</span>
+          <span className="text-zinc-900 font-semibold text-sm">Taeyoung</span>
         </div>
-        <button onClick={() => setIsOpen(!isOpen)} className="text-white p-1">
+        <button onClick={() => setIsOpen(!isOpen)} className="text-zinc-900 p-1">
           {isOpen ? <X size={24} /> : <Menu size={24} />}
         </button>
       </div>
@@ -297,7 +297,7 @@ const MobileNav = ({ activeSection, setActiveSection }: { activeSection: string,
                     scrollToSection(item.id);
                     setIsOpen(false);
                   }}
-                  className={`flex items-center gap-3 p-3 rounded-lg ${activeSection === item.id ? 'bg-white/10 text-white' : 'text-zinc-500'}`}
+                  className={`flex items-center gap-3 p-3 rounded-lg ${activeSection === item.id ? 'bg-black/10 text-zinc-900' : 'text-zinc-500'}`}
                 >
                   <item.icon size={18} />
                   <span>{item.label}</span>
@@ -317,37 +317,37 @@ const Header = () => {
       <div className="relative flex flex-col lg:flex-row items-center gap-12">
         <div className="flex-1 flex flex-col items-start gap-6 z-10">
           <div className="relative">
-            <div className="w-20 h-20 rounded-full overflow-hidden border border-white/10 bg-zinc-900 shadow-inner">
+            <div className="w-20 h-20 rounded-full overflow-hidden border border-black/10 bg-zinc-100 shadow-inner">
               <ProfileImage />
             </div>
-            <div className="absolute bottom-0.5 right-0.5 w-4 h-4 bg-emerald-500 rounded-full border-2 border-[#050505] shadow-sm"></div>
+            <div className="absolute bottom-0.5 right-0.5 w-4 h-4 bg-emerald-500 rounded-full border-2 border-white shadow-sm"></div>
           </div>
 
           <div className="max-w-xl">
             <div className="flex items-center gap-2 mb-1">
-              <h1 className="text-3xl font-bold text-white">Taeyoung</h1>
+              <h1 className="text-3xl font-bold text-zinc-900">Taeyoung</h1>
               <VerifiedBadge size={22} />
             </div>
-            <p className="text-zinc-400 text-lg mb-6">
+            <p className="text-zinc-800 text-lg mb-6 font-semibold">
               Data & AI
             </p>
             
             <div className="space-y-6 mb-8">
-              <p className="text-zinc-400 text-base leading-relaxed">
+              <p className="text-zinc-800 text-base leading-relaxed font-medium">
                 Driven by data, defined by action.
               </p>
-              <div className="flex items-center gap-2 text-zinc-400 text-sm">
+              <div className="flex items-center gap-2 text-zinc-600 text-sm font-medium">
                 <span>Currently based in Seoul, South Korea 🇰🇷</span>
               </div>
             </div>
 
             <div className="flex flex-wrap gap-3">
-              <button className="bg-white text-black px-6 py-2 rounded-lg font-semibold text-sm hover:bg-zinc-200 transition-colors">
+              <button className="bg-zinc-900 text-white px-6 py-2 rounded-lg font-bold text-sm hover:bg-zinc-800 transition-colors">
                 View Resume
               </button>
               <a 
                 href="mailto:lee1179717@naver.com"
-                className="bg-white/5 text-white p-2 rounded-lg border border-white/10 hover:bg-white/10 transition-colors flex items-center justify-center"
+                className="bg-black/5 text-zinc-900 p-2 rounded-lg border border-black/10 hover:bg-black/10 transition-colors flex items-center justify-center"
               >
                 <Mail size={20} />
               </a>
@@ -355,7 +355,7 @@ const Header = () => {
                 href="https://github.com/Taeyoungleee" 
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="bg-white/5 text-white p-2 rounded-lg border border-white/10 hover:bg-white/10 transition-colors flex items-center justify-center"
+                className="bg-black/5 text-zinc-900 p-2 rounded-lg border border-black/10 hover:bg-black/10 transition-colors flex items-center justify-center"
               >
                 <Github size={20} />
               </a>
@@ -377,12 +377,12 @@ function ExperienceCard({ exp, isLast, onImageClick }: { exp: Experience, isLast
     >
       {/* Timeline line */}
       {!isLast && (
-        <div className="absolute left-[11px] top-8 bottom-0 w-[1px] bg-gradient-to-b from-accent/50 via-accent/10 to-transparent" />
+        <div className="absolute left-[11px] top-8 bottom-0 w-[1px] bg-zinc-200" />
       )}
       
       {/* Timeline dot */}
-      <div className="absolute left-0 top-2 w-[23px] h-[23px] rounded-full border-2 border-accent/30 bg-bg flex items-center justify-center z-10">
-        <div className="w-2 h-2 rounded-full bg-accent animate-pulse" />
+      <div className="absolute left-0 top-2 w-[23px] h-[23px] rounded-full border-2 border-zinc-300 bg-white flex items-center justify-center z-10">
+        <div className="w-2 h-2 rounded-full bg-zinc-900" />
       </div>
 
       <div className="flex flex-col gap-8">
@@ -390,24 +390,24 @@ function ExperienceCard({ exp, isLast, onImageClick }: { exp: Experience, isLast
         <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-4">
           <div>
             <div className="flex items-center gap-3 mb-2">
-              <h3 className="text-3xl font-bold text-white tracking-tighter group-hover:text-accent transition-colors duration-500">
+              <h3 className="text-3xl font-bold text-zinc-900 tracking-tighter group-hover:text-accent transition-colors duration-500">
                 {exp.company}
               </h3>
-              <span className="px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-widest bg-accent/10 text-accent border border-accent/20">
+              <span className="px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-widest bg-zinc-100 text-zinc-900 border border-zinc-200">
                 Experience
               </span>
             </div>
-            <p className="text-xl text-zinc-300 font-medium tracking-tight italic opacity-80">{exp.role}</p>
+            <p className="text-xl text-zinc-700 font-bold tracking-tight italic opacity-90">{exp.role}</p>
           </div>
-          <div className="flex items-center gap-2 text-zinc-500 text-sm font-mono bg-white/5 px-3 py-1.5 rounded-full border border-white/5">
-            <Calendar size={14} className="text-accent" />
+          <div className="flex items-center gap-2 text-zinc-500 text-sm font-mono bg-black/5 px-3 py-1.5 rounded-full border border-black/5">
+            <Calendar size={14} className="text-zinc-900" />
             <span>{exp.period}</span>
           </div>
         </div>
 
         {/* Description Section */}
         <div className="max-w-3xl">
-          <p className="text-lg text-zinc-400 leading-relaxed font-light">
+          <p className="text-lg text-zinc-800 leading-relaxed font-semibold">
             {exp.description}
           </p>
         </div>
@@ -416,14 +416,14 @@ function ExperienceCard({ exp, isLast, onImageClick }: { exp: Experience, isLast
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
           {/* Responsibilities */}
           <div className="lg:col-span-7 space-y-6">
-            <h4 className="text-[10px] uppercase tracking-[0.2em] text-zinc-600 font-black flex items-center gap-3">
-              <span className="w-8 h-[1px] bg-zinc-800" />
+            <h4 className="text-[10px] uppercase tracking-[0.2em] text-zinc-500 font-black flex items-center gap-3">
+              <span className="w-8 h-[1px] bg-zinc-200" />
               Core Responsibilities
             </h4>
             <ul className="space-y-4">
               {exp.details.map((detail, i) => (
-                <li key={i} className="flex gap-4 text-sm leading-relaxed text-zinc-400 group/item">
-                  <div className="mt-1.5 w-1.5 h-1.5 rounded-full bg-accent/30 group-hover/item:bg-accent transition-colors shrink-0" />
+                <li key={i} className="flex gap-4 text-sm leading-relaxed text-zinc-800 font-semibold group/item">
+                  <div className="mt-1.5 w-1.5 h-1.5 rounded-full bg-zinc-300 group-hover/item:bg-zinc-900 transition-colors shrink-0" />
                   <span>{detail}</span>
                 </li>
               ))}
@@ -432,20 +432,19 @@ function ExperienceCard({ exp, isLast, onImageClick }: { exp: Experience, isLast
 
           {/* Achievements */}
           <div className="lg:col-span-5 space-y-6">
-            <h4 className="text-[10px] uppercase tracking-[0.2em] text-zinc-600 font-black flex items-center gap-3">
-              <span className="w-8 h-[1px] bg-zinc-800" />
+            <h4 className="text-[10px] uppercase tracking-[0.2em] text-zinc-500 font-black flex items-center gap-3">
+              <span className="w-8 h-[1px] bg-zinc-200" />
               Key Milestones
             </h4>
-            <div className="space-y-3">
+            <div className="space-y-6">
               {exp.achievements.map((ach, i) => (
-                <div key={i} className="relative overflow-hidden group/ach">
-                  <div className="absolute inset-0 bg-gradient-to-r from-accent/5 to-transparent opacity-0 group-hover/ach:opacity-100 transition-opacity" />
-                  <div className="relative p-4 rounded-xl border border-white/5 bg-white/[0.02] hover:border-accent/20 transition-all">
-                    <div className="flex gap-3 items-start">
-                      <span className="text-accent font-mono text-xs mt-0.5">0{i + 1}</span>
-                      <span className="text-sm font-medium text-zinc-300 leading-snug">{ach}</span>
-                    </div>
+                <div key={i} className="flex gap-5 items-start group/ach">
+                  <div className="w-7 h-7 rounded-lg bg-zinc-900 flex items-center justify-center shrink-0 mt-0.5 shadow-sm group-hover/ach:scale-110 transition-transform duration-300">
+                    <span className="text-[10px] font-black text-white">{i + 1}</span>
                   </div>
+                  <p className="text-[15px] font-bold text-zinc-900 leading-relaxed tracking-tight group-hover/ach:translate-x-1 transition-transform duration-300">
+                    {ach}
+                  </p>
                 </div>
               ))}
             </div>
@@ -460,9 +459,9 @@ function ExperienceCard({ exp, isLast, onImageClick }: { exp: Experience, isLast
               <div 
                 key={i} 
                 onClick={() => onImageClick(img)}
-                className={`group/img relative aspect-[16/10] rounded-2xl overflow-hidden border border-white/10 bg-zinc-900 cursor-zoom-in ${isElentec ? 'p-2' : ''}`}
+                className={`group/img relative aspect-[16/10] rounded-2xl overflow-hidden border border-black/10 bg-zinc-100 cursor-zoom-in ${isElentec ? 'p-2' : ''}`}
               >
-                <div className="absolute inset-0 bg-accent/20 opacity-0 group-hover/img:opacity-100 transition-opacity z-10 pointer-events-none mix-blend-overlay" />
+                <div className="absolute inset-0 bg-black/5 opacity-0 group-hover/img:opacity-100 transition-opacity z-10 pointer-events-none" />
                 <SafeImage 
                   src={img} 
                   alt={`${exp.company} project ${i + 1}`} 
@@ -470,7 +469,7 @@ function ExperienceCard({ exp, isLast, onImageClick }: { exp: Experience, isLast
                   fallback={`https://picsum.photos/seed/${exp.id}${i}/800/600`}
                 />
                 <div className="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover/img:opacity-100 transition-opacity z-20">
-                  <p className="text-[10px] uppercase tracking-widest text-white/60 font-bold">Project Visual 0{i + 1}</p>
+                  <p className="text-[10px] uppercase tracking-widest text-white font-bold">Project Visual 0{i + 1}</p>
                 </div>
               </div>
             );
@@ -483,18 +482,18 @@ function ExperienceCard({ exp, isLast, onImageClick }: { exp: Experience, isLast
 
 const SkillsSection = () => {
   return (
-    <section id="skills" className="py-20 border-t border-white/5">
-      <h2 className="text-xs uppercase tracking-[0.3em] text-zinc-600 font-bold mb-12">Skills & Tools</h2>
+    <section id="skills" className="py-20 border-t border-border">
+      <h2 className="text-xs uppercase tracking-[0.3em] text-zinc-500 font-bold mb-12">Skills & Tools</h2>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {skills.map((skill, i) => (
-          <div key={i} className="p-8 rounded-2xl bg-card border border-white/5 hover:border-accent/20 transition-colors">
-            <h3 className="text-lg font-bold mb-6 flex items-center gap-2">
+          <div key={i} className="p-8 rounded-2xl bg-card border border-border hover:border-accent/20 transition-colors">
+            <h3 className="text-lg font-bold mb-6 flex items-center gap-2 text-zinc-900">
               <div className="w-1.5 h-1.5 rounded-full bg-accent" />
               {skill.category}
             </h3>
             <div className="flex flex-wrap gap-2">
               {skill.items.map((item, j) => (
-                <span key={j} className="px-3 py-1.5 rounded-lg bg-white/5 text-zinc-300 text-sm border border-white/5">
+                <span key={j} className="px-3 py-1.5 rounded-lg bg-black/5 text-zinc-900 font-bold text-sm border border-black/5">
                   {item}
                 </span>
               ))}
@@ -508,18 +507,18 @@ const SkillsSection = () => {
 
 const CertificatesSection = () => {
   return (
-    <section id="certificates" className="py-20 border-t border-white/5">
-      <h2 className="text-xs uppercase tracking-[0.3em] text-zinc-600 font-bold mb-12">Certificates</h2>
+    <section id="certificates" className="py-20 border-t border-border">
+      <h2 className="text-xs uppercase tracking-[0.3em] text-zinc-500 font-bold mb-12">Certificates</h2>
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         {certificates.map((cert, i) => (
-          <div key={i} className="flex items-center justify-between p-5 rounded-xl bg-card border border-white/5">
+          <div key={i} className="flex items-center justify-between p-5 rounded-xl bg-card border border-border">
             <div className="flex items-center gap-4">
               <div className="w-10 h-10 rounded-lg bg-accent/10 flex items-center justify-center text-accent">
                 <Award size={20} />
               </div>
-              <span className="text-white font-medium">{cert.name}</span>
+              <span className="text-zinc-900 font-bold">{cert.name}</span>
             </div>
-            <span className="text-zinc-600 font-mono text-xs">{cert.date}</span>
+            <span className="text-zinc-500 font-mono text-xs font-bold">{cert.date}</span>
           </div>
         ))}
       </div>
@@ -529,26 +528,26 @@ const CertificatesSection = () => {
 
 const ContactSection = () => {
   return (
-    <section id="contact" className="py-20 border-t border-white/5">
-      <h2 className="text-xs uppercase tracking-[0.3em] text-zinc-600 font-bold mb-12">Get in Touch</h2>
+    <section id="contact" className="py-20 border-t border-border">
+      <h2 className="text-xs uppercase tracking-[0.3em] text-zinc-500 font-bold mb-12">Get in Touch</h2>
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
         <div>
-          <h3 className="text-3xl font-bold mb-6">Let's build something <br /> <span className="text-accent">data-driven</span> together.</h3>
-          <p className="text-zinc-400 mb-8 max-w-md">
+          <h3 className="text-3xl font-bold mb-6 text-zinc-900">Let's build something <br /> <span className="text-accent">data-driven</span> together.</h3>
+          <p className="text-zinc-700 mb-8 max-w-md font-medium">
             I'm always open to discussing new projects, creative ideas or opportunities to be part of your visions.
           </p>
           <div className="space-y-4">
-            <div className="flex items-center gap-4 text-white">
-              <div className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center border border-white/10">
+            <div className="flex items-center gap-4 text-zinc-900">
+              <div className="w-10 h-10 rounded-full bg-black/5 flex items-center justify-center border border-black/10">
                 <Mail size={18} />
               </div>
-              <span>lee1179717@naver.com</span>
+              <span className="font-bold">lee1179717@naver.com</span>
             </div>
-            <div className="flex items-center gap-4 text-white">
-              <div className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center border border-white/10">
+            <div className="flex items-center gap-4 text-zinc-900">
+              <div className="w-10 h-10 rounded-full bg-black/5 flex items-center justify-center border border-black/10">
                 <Github size={18} />
               </div>
-              <a href="https://github.com/Taeyoungleee" target="_blank" rel="noopener noreferrer" className="hover:text-accent transition-colors">
+              <a href="https://github.com/Taeyoungleee" target="_blank" rel="noopener noreferrer" className="hover:text-accent transition-colors font-bold">
                 github.com/Taeyoungleee
               </a>
             </div>
@@ -560,20 +559,20 @@ const ContactSection = () => {
             <input 
               type="text" 
               placeholder="Name" 
-              className="w-full bg-card border border-white/5 rounded-xl p-4 text-white focus:outline-none focus:border-accent transition-colors"
+              className="w-full bg-card border border-border rounded-xl p-4 text-zinc-900 placeholder:text-zinc-400 focus:outline-none focus:border-accent transition-colors font-medium"
             />
             <input 
               type="email" 
               placeholder="Email" 
-              className="w-full bg-card border border-white/5 rounded-xl p-4 text-white focus:outline-none focus:border-accent transition-colors"
+              className="w-full bg-card border border-border rounded-xl p-4 text-zinc-900 placeholder:text-zinc-400 focus:outline-none focus:border-accent transition-colors font-medium"
             />
           </div>
           <textarea 
             placeholder="Message" 
             rows={5}
-            className="w-full bg-card border border-white/5 rounded-xl p-4 text-white focus:outline-none focus:border-accent transition-colors resize-none"
+            className="w-full bg-card border border-border rounded-xl p-4 text-zinc-900 placeholder:text-zinc-400 focus:outline-none focus:border-accent transition-colors resize-none font-medium"
           ></textarea>
-          <button className="w-full bg-white text-black font-bold py-4 rounded-xl hover:bg-zinc-200 transition-colors">
+          <button className="w-full bg-zinc-900 text-white font-bold py-4 rounded-xl hover:bg-zinc-800 transition-colors">
             Send Message
           </button>
         </form>
@@ -584,21 +583,21 @@ const ContactSection = () => {
 
 const Footer = () => {
   return (
-    <footer className="py-12 border-t border-white/5 text-center">
+    <footer className="py-12 border-t border-border text-center">
       <div className="mb-8">
-        <svg viewBox="0 0 100 40" className="w-24 h-auto mx-auto fill-white opacity-50">
+        <svg viewBox="0 0 100 40" className="w-24 h-auto mx-auto fill-zinc-900 opacity-20">
           <path d="M10,20 Q25,5 40,20 T70,20 T100,20" fill="none" stroke="currentColor" strokeWidth="2" />
         </svg>
       </div>
       <div className="flex justify-center gap-6 mb-8">
-        <a href="https://github.com/Taeyoungleee" target="_blank" rel="noopener noreferrer" className="text-zinc-600 hover:text-white transition-colors">
+        <a href="https://github.com/Taeyoungleee" target="_blank" rel="noopener noreferrer" className="text-zinc-400 hover:text-zinc-900 transition-colors">
           <Github size={20} />
         </a>
-        <a href="mailto:lee1179717@naver.com" className="text-zinc-600 hover:text-white transition-colors">
+        <a href="mailto:lee1179717@naver.com" className="text-zinc-400 hover:text-zinc-900 transition-colors">
           <Mail size={20} />
         </a>
       </div>
-      <p className="text-zinc-600 text-xs tracking-widest uppercase">
+      <p className="text-zinc-500 text-xs tracking-widest uppercase font-bold">
         © 2026 Taeyoung. Designed with precision.
       </p>
     </footer>
@@ -658,8 +657,8 @@ export default function Portfolio() {
         <div className="max-w-6xl mx-auto px-6 lg:px-16">
           <Header />
           
-          <section id="experience" className="py-20 border-t border-white/5">
-            <h2 className="text-xs uppercase tracking-[0.3em] text-zinc-600 font-bold mb-16">Work Experience</h2>
+          <section id="experience" className="py-20 border-t border-border">
+            <h2 className="text-xs uppercase tracking-[0.3em] text-zinc-500 font-bold mb-16">Work Experience</h2>
             {experiences.map((exp, index) => (
               <div key={exp.id}>
                 <ExperienceCard 

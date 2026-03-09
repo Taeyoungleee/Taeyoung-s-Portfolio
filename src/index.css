@@ -5,30 +5,30 @@
   --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
   --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
   
-  --color-bg: #0a0a0a;
-  --color-card: #141414;
-  --color-border: rgba(255, 255, 255, 0.1);
-  --color-accent: #3b82f6;
+  --color-bg: #ffffff;
+  --color-card: #f9fafb;
+  --color-border: rgba(0, 0, 0, 0.08);
+  --color-accent: #2563eb;
 }
 
 @layer base {
   body {
-    @apply bg-bg text-zinc-400 font-sans antialiased;
+    @apply bg-bg text-zinc-800 font-sans antialiased;
   }
   
   h1, h2, h3, h4 {
-    @apply text-white font-semibold tracking-tight;
+    @apply text-zinc-900 font-bold tracking-tight;
   }
 }
 
 .glass {
-  @apply bg-white/5 backdrop-blur-md border border-white/10;
+  @apply bg-black/5 backdrop-blur-md border border-black/10;
 }
 
 .sidebar-link {
-  @apply flex items-center gap-3 px-4 py-2 rounded-lg transition-colors hover:bg-white/5 hover:text-white;
+  @apply flex items-center gap-3 px-4 py-2 rounded-lg transition-colors hover:bg-black/5 hover:text-zinc-900;
 }
 
 .sidebar-link.active {
-  @apply bg-white/10 text-white font-medium;
+  @apply bg-black/10 text-zinc-900 font-semibold;
 }
